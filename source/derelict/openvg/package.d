@@ -32,11 +32,11 @@ private
     // default libnames = reference implementation
 
     static if(Derelict_OS_Windows)
-        enum libNames = "libOpenVG.dll";
+        enum libNames = "libAmanithVG.dll,libOpenVG.dll";
     else static if (Derelict_OS_Mac)
-        enum libNames = "libOpenVG.dylib";
+        enum libNames = "libAmanithVG.4.dylib,libOpenVG.dylib";
     else static if (Derelict_OS_Linux)
-        enum libNames = "libOpenVG.so";
+        enum libNames = "libAmanithVG.so.4,libOpenVG.so";
     else
         static assert(0, "Need to implement OpenVG libNames for this operating system.");
 }
@@ -75,7 +75,6 @@ enum : VGboolean
 {
   VG_FALSE               = 0,
   VG_TRUE                = 1,
-  VG_BOOLEAN_FORCE_SIZE  = VG_MAX_ENUM
 }
 
 alias VGErrorCode = int;
@@ -90,7 +89,6 @@ enum : VGErrorCode
   VG_UNSUPPORTED_PATH_FORMAT_ERROR            = 0x1005,
   VG_IMAGE_IN_USE_ERROR                       = 0x1006,
   VG_NO_CONTEXT_ERROR                         = 0x1007,
-  VG_ERROR_CODE_FORCE_SIZE                    = VG_MAX_ENUM
 }
 
 alias VGParamType = int;
@@ -156,8 +154,6 @@ enum : VGParamType
   VG_MAX_IMAGE_BYTES                          = 0x1168,
   VG_MAX_FLOAT                                = 0x1169,
   VG_MAX_GAUSSIAN_STD_DEVIATION               = 0x116A,
-
-  VG_PARAM_TYPE_FORCE_SIZE                    = VG_MAX_ENUM
 }
 
 alias VGRenderingQuality = int;
@@ -166,8 +162,6 @@ enum : VGRenderingQuality
   VG_RENDERING_QUALITY_NONANTIALIASED         = 0x1200,
   VG_RENDERING_QUALITY_FASTER                 = 0x1201,
   VG_RENDERING_QUALITY_BETTER                 = 0x1202, /* Default */
-
-  VG_RENDERING_QUALITY_FORCE_SIZE             = VG_MAX_ENUM
 }
 
 alias VGPixelLayout = int;
@@ -178,8 +172,6 @@ enum : VGPixelLayout
   VG_PIXEL_LAYOUT_BGR_VERTICAL                = 0x1302,
   VG_PIXEL_LAYOUT_RGB_HORIZONTAL              = 0x1303,
   VG_PIXEL_LAYOUT_BGR_HORIZONTAL              = 0x1304,
-
-  VG_PIXEL_LAYOUT_FORCE_SIZE                  = VG_MAX_ENUM
 }
 
 alias VGMatrixMode = int;
@@ -190,8 +182,6 @@ enum : VGMatrixMode
   VG_MATRIX_FILL_PAINT_TO_USER                = 0x1402,
   VG_MATRIX_STROKE_PAINT_TO_USER              = 0x1403,
   VG_MATRIX_GLYPH_USER_TO_SURFACE             = 0x1404,
-
-  VG_MATRIX_MODE_FORCE_SIZE                   = VG_MAX_ENUM
 }
 
 alias VGMaskOperation = int;
@@ -203,8 +193,6 @@ enum : VGMaskOperation
   VG_UNION_MASK                               = 0x1503,
   VG_INTERSECT_MASK                           = 0x1504,
   VG_SUBTRACT_MASK                            = 0x1505,
-
-  VG_MASK_OPERATION_FORCE_SIZE                = VG_MAX_ENUM
 }
 
 enum VG_PATH_FORMAT_STANDARD = 0;
@@ -216,8 +204,6 @@ enum : VGPathDatatype
   VG_PATH_DATATYPE_S_16                       =  1,
   VG_PATH_DATATYPE_S_32                       =  2,
   VG_PATH_DATATYPE_F                          =  3,
-
-  VG_PATH_DATATYPE_FORCE_SIZE                 = VG_MAX_ENUM
 }
 
 alias VGPathAbsRel = int;
@@ -225,8 +211,6 @@ enum : VGPathAbsRel
 {
   VG_ABSOLUTE                                 = 0,
   VG_RELATIVE                                 = 1,
-
-  VG_PATH_ABS_REL_FORCE_SIZE                  = VG_MAX_ENUM
 }
 
 alias VGPathSegment = int;
@@ -245,8 +229,6 @@ enum : VGPathSegment
   VG_SCWARC_TO                                = (10 << 1),
   VG_LCCWARC_TO                               = (11 << 1),
   VG_LCWARC_TO                                = (12 << 1),
-
-  VG_PATH_SEGMENT_FORCE_SIZE                  = VG_MAX_ENUM
 }
 
 alias VGPathCommand = int;
@@ -276,8 +258,6 @@ enum : VGPathCommand
   VG_LCCWARC_TO_REL                           = VG_LCCWARC_TO | VG_RELATIVE,
   VG_LCWARC_TO_ABS                            = VG_LCWARC_TO  | VG_ABSOLUTE,
   VG_LCWARC_TO_REL                            = VG_LCWARC_TO  | VG_RELATIVE,
-
-  VG_PATH_COMMAND_FORCE_SIZE                  = VG_MAX_ENUM
 }
 
 alias VGPathCapabilities = int;
@@ -296,8 +276,6 @@ enum : VGPathCapabilities
   VG_PATH_CAPABILITY_PATH_BOUNDS              = (1 << 10),
   VG_PATH_CAPABILITY_PATH_TRANSFORMED_BOUNDS  = (1 << 11),
   VG_PATH_CAPABILITY_ALL                      = (1 << 12) - 1,
-
-  VG_PATH_CAPABILITIES_FORCE_SIZE             = VG_MAX_ENUM
 }
 
 alias VGPathParamType = int;
@@ -309,8 +287,6 @@ enum : VGPathParamType
   VG_PATH_BIAS                                = 0x1603,
   VG_PATH_NUM_SEGMENTS                        = 0x1604,
   VG_PATH_NUM_COORDS                          = 0x1605,
-
-  VG_PATH_PARAM_TYPE_FORCE_SIZE               = VG_MAX_ENUM
 }
 
 
@@ -320,8 +296,6 @@ enum : VGCapStyle
   VG_CAP_BUTT                                 = 0x1700,
   VG_CAP_ROUND                                = 0x1701,
   VG_CAP_SQUARE                               = 0x1702,
-
-  VG_CAP_STYLE_FORCE_SIZE                     = VG_MAX_ENUM
 }
 
 alias VGJoinStyle = int;
@@ -330,8 +304,6 @@ enum : VGJoinStyle
   VG_JOIN_MITER                               = 0x1800,
   VG_JOIN_ROUND                               = 0x1801,
   VG_JOIN_BEVEL                               = 0x1802,
-
-  VG_JOIN_STYLE_FORCE_SIZE                    = VG_MAX_ENUM
 }
 
 alias VGFillRule = int;
@@ -339,8 +311,6 @@ enum : VGFillRule
 {
   VG_EVEN_ODD                                 = 0x1900,
   VG_NON_ZERO                                 = 0x1901,
-
-  VG_FILL_RULE_FORCE_SIZE                     = VG_MAX_ENUM
 }
 
 alias VGPaintMode = int;
@@ -348,8 +318,6 @@ enum : VGPaintMode
 {
   VG_STROKE_PATH                              = (1 << 0),
   VG_FILL_PATH                                = (1 << 1),
-
-  VG_PAINT_MODE_FORCE_SIZE                    = VG_MAX_ENUM
 }
 
 alias VGPaintParamType = int;
@@ -370,8 +338,6 @@ enum : VGPaintParamType
 
   /* Pattern paint parameters */
   VG_PAINT_PATTERN_TILING_MODE                = 0x1A06,
-
-  VG_PAINT_PARAM_TYPE_FORCE_SIZE              = VG_MAX_ENUM
 }
 
 alias VGPaintType = int;
@@ -381,8 +347,6 @@ enum : VGPaintType
   VG_PAINT_TYPE_LINEAR_GRADIENT               = 0x1B01,
   VG_PAINT_TYPE_RADIAL_GRADIENT               = 0x1B02,
   VG_PAINT_TYPE_PATTERN                       = 0x1B03,
-
-  VG_PAINT_TYPE_FORCE_SIZE                    = VG_MAX_ENUM
 }
 
 alias VGColorRampSpreadMode = int;
@@ -391,8 +355,6 @@ enum : VGColorRampSpreadMode
   VG_COLOR_RAMP_SPREAD_PAD                    = 0x1C00,
   VG_COLOR_RAMP_SPREAD_REPEAT                 = 0x1C01,
   VG_COLOR_RAMP_SPREAD_REFLECT                = 0x1C02,
-
-  VG_COLOR_RAMP_SPREAD_MODE_FORCE_SIZE        = VG_MAX_ENUM
 }
 
 alias VGTilingMode = int;
@@ -402,8 +364,6 @@ enum : VGTilingMode
   VG_TILE_PAD                                 = 0x1D01,
   VG_TILE_REPEAT                              = 0x1D02,
   VG_TILE_REFLECT                             = 0x1D03,
-
-  VG_TILING_MODE_FORCE_SIZE                   = VG_MAX_ENUM
 }
 
 alias VGImageFormat = int;
@@ -456,8 +416,6 @@ enum : VGImageFormat
   VG_lXBGR_8888                               =  7 | (1 << 6) | (1 << 7),
   VG_lABGR_8888                               =  8 | (1 << 6) | (1 << 7),
   VG_lABGR_8888_PRE                           =  9 | (1 << 6) | (1 << 7),
-
-  VG_IMAGE_FORMAT_FORCE_SIZE                  = VG_MAX_ENUM
 }
 
 alias VGImageQuality = int;
@@ -466,8 +424,6 @@ enum : VGImageQuality
   VG_IMAGE_QUALITY_NONANTIALIASED             = (1 << 0),
   VG_IMAGE_QUALITY_FASTER                     = (1 << 1),
   VG_IMAGE_QUALITY_BETTER                     = (1 << 2),
-
-  VG_IMAGE_QUALITY_FORCE_SIZE                 = VG_MAX_ENUM
 }
 
 alias VGImageParamType = int;
@@ -476,8 +432,6 @@ enum : VGImageParamType
   VG_IMAGE_FORMAT                             = 0x1E00,
   VG_IMAGE_WIDTH                              = 0x1E01,
   VG_IMAGE_HEIGHT                             = 0x1E02,
-
-  VG_IMAGE_PARAM_TYPE_FORCE_SIZE              = VG_MAX_ENUM
 }
 
 alias VGImageMode = int;
@@ -486,8 +440,6 @@ enum : VGImageMode
   VG_DRAW_IMAGE_NORMAL                        = 0x1F00,
   VG_DRAW_IMAGE_MULTIPLY                      = 0x1F01,
   VG_DRAW_IMAGE_STENCIL                       = 0x1F02,
-
-  VG_IMAGE_MODE_FORCE_SIZE                    = VG_MAX_ENUM
 }
 
 alias VGImageChannel = int;
@@ -496,8 +448,6 @@ enum : VGImageChannel {
   VG_GREEN                                    = (1 << 2),
   VG_BLUE                                     = (1 << 1),
   VG_ALPHA                                    = (1 << 0),
-
-  VG_IMAGE_CHANNEL_FORCE_SIZE                 = VG_MAX_ENUM
 }
 
 alias VGBlendMode = int;
@@ -513,16 +463,12 @@ enum : VGBlendMode
   VG_BLEND_DARKEN                             = 0x2007,
   VG_BLEND_LIGHTEN                            = 0x2008,
   VG_BLEND_ADDITIVE                           = 0x2009,
-
-  VG_BLEND_MODE_FORCE_SIZE                    = VG_MAX_ENUM
 }
 
 alias VGFontParamType = int;
 enum : VGFontParamType
 {
   VG_FONT_NUM_GLYPHS                          = 0x2F00,
-
-  VG_FONT_PARAM_TYPE_FORCE_SIZE               = VG_MAX_ENUM
 }
 
 alias VGHardwareQueryType = int;
@@ -530,8 +476,6 @@ enum : VGHardwareQueryType
 {
   VG_IMAGE_FORMAT_QUERY                       = 0x2100,
   VG_PATH_DATATYPE_QUERY                      = 0x2101,
-
-  VG_HARDWARE_QUERY_TYPE_FORCE_SIZE           = VG_MAX_ENUM
 }
 
 alias VGHardwareQueryResult = int;
@@ -539,8 +483,6 @@ enum : VGHardwareQueryResult
 {
   VG_HARDWARE_ACCELERATED                     = 0x2200,
   VG_HARDWARE_UNACCELERATED                   = 0x2201,
-
-  VG_HARDWARE_QUERY_RESULT_FORCE_SIZE         = VG_MAX_ENUM
 }
 
 alias VGStringID = int;
@@ -550,8 +492,6 @@ enum : VGStringID
   VG_RENDERER                                 = 0x2301,
   VG_VERSION                                  = 0x2302,
   VG_EXTENSIONS                               = 0x2303,
-
-  VG_STRING_ID_FORCE_SIZE                     = VG_MAX_ENUM
 }
 
 
@@ -566,8 +506,6 @@ enum : VGUErrorCode
   VGU_OUT_OF_MEMORY_ERROR                      = 0xF002,
   VGU_PATH_CAPABILITY_ERROR                    = 0xF003,
   VGU_BAD_WARP_ERROR                           = 0xF004,
-
-  VGU_ERROR_CODE_FORCE_SIZE                    = VG_MAX_ENUM
 }
 
 alias VGUArcType = int;
@@ -576,8 +514,6 @@ enum : VGUArcType
   VGU_ARC_OPEN                                 = 0xF100,
   VGU_ARC_CHORD                                = 0xF101,
   VGU_ARC_PIE                                  = 0xF102,
-
-  VGU_ARC_TYPE_FORCE_SIZE                      = VG_MAX_ENUM
 }
 
 
@@ -887,6 +823,49 @@ class DerelictVGLoader : SharedLibLoader
         {
             super(libNames);
         }
+
+        void loadExtensions()
+        {
+            // try to load Amanith extensions
+            try
+            {
+                bindFunc(cast(void**)&vgPrivContextCreateMZT, "vgPrivContextCreateAM");
+                bindFunc(cast(void**)&vgPrivContextDestroyMZT, "vgPrivContextDestroyAM");
+                bindFunc(cast(void**)&vgPrivSurfaceCreateMZT, "vgPrivSurfaceCreateAM");
+                bindFunc(cast(void**)&vgPrivSurfaceCreateFromImageMZT, "vgPrivSurfaceCreateFromImageAM");
+                bindFunc(cast(void**)&vgPrivSurfaceResizeMZT, "vgPrivSurfaceResizeAM");
+                bindFunc(cast(void**)&vgPrivSurfaceDestroyMZT, "vgPrivSurfaceDestroyAM");
+                bindFunc(cast(void**)&vgPrivGetSurfaceWidthMZT, "vgPrivGetSurfaceWidthAM");
+                bindFunc(cast(void**)&vgPrivGetSurfaceHeightMZT, "vgPrivGetSurfaceHeightAM");
+                bindFunc(cast(void**)&vgPrivGetSurfaceFormatMZT, "vgPrivGetSurfaceFormatAM");
+                bindFunc(cast(void**)&vgPrivGetSurfacePixelsMZT, "vgPrivGetSurfacePixelsAM");
+                bindFunc(cast(void**)&vgPrivMakeCurrentMZT, "vgPrivMakeCurrentAM");
+                bindFunc(cast(void**)&vgInitContextMZT, "vgInitContextAM");
+                bindFunc(cast(void**)&vgDestroyContextMZT, "vgDestroyContextAM");
+                bindFunc(cast(void**)&vgResizeSurfaceMZT, "vgResizeSurfaceAM");
+                bindFunc(cast(void**)&vgGetSurfaceWidthMZT, "vgGetSurfaceWidthAM");
+                bindFunc(cast(void**)&vgGetSurfaceHeightMZT, "vgGetSurfaceHeightAM");
+                bindFunc(cast(void**)&vgGetSurfaceFormatMZT, "vgGetSurfaceFormatAM");
+                bindFunc(cast(void**)&vgGetSurfacePixelsMZT, "vgGetSurfacePixelsAM");
+                bindFunc(cast(void**)&vgPostSwapBuffersMZT, "vgPostSwapBuffersAM");
+                _VG_MZT_context_creation = true;
+            }
+            catch(Exception e)
+            {
+                _VG_MZT_context_creation = false;
+            }
+
+            try
+            {
+                bindFunc(cast(void**)&vgResetStatisticsMZT, "vgResetStatisticsAM");
+                bindFunc(cast(void**)&vgGetStatisticiMZT, "vgGetStatisticiAM");
+                _VG_MZT_statistics = true;
+            }
+            catch(Exception e)
+            {
+                _VG_MZT_statistics = false;
+            }
+        }
     }
 }
 
@@ -925,4 +904,168 @@ shared static this()
 {
     DerelictVG = new DerelictVGLoader();
     DerelictVGU = new DerelictVGULoader();
+}
+
+
+// Extensions
+
+private __gshared bool _VG_MZT_context_creation;
+@nogc nothrow {
+    bool VG_MZT_context_creation() @property { return _VG_MZT_context_creation; }
+}
+
+private __gshared bool _VG_MZT_statistics;
+@nogc nothrow {
+    bool VG_MZT_statistics() @property { return _VG_MZT_statistics; }
+}                    
+
+
+
+/*-------------------------------------------------------------------------------
+* AmanithVG extensions
+*------------------------------------------------------------------------------*/
+
+
+
+// VG_MZT_separable_cap_style
+alias VGParamType0Mzt = int;
+enum : VGParamType0Mzt
+{
+    VG_STROKE_START_CAP_STYLE_MZT               = 0x1192,
+    VG_STROKE_END_CAP_STYLE_MZT                 = 0x1193,
+}
+
+// VG_MZT_separable_blend_modes
+alias VGParamType1Mzt = int;
+
+enum : VGParamType1Mzt
+{
+    VG_STROKE_BLEND_MODE_MZT                    = 0x1190,
+    VG_FILL_BLEND_MODE_MZT                      = 0x1191,
+}
+
+
+// VG_MZT_color_ramp_interpolation
+alias VGPaintParamType0Mzt = int;
+enum : VGPaintParamType0Mzt
+{
+    VG_PAINT_COLOR_RAMP_INTERPOLATION_TYPE_MZT  = 0x1A91,
+}
+
+alias VGColorRampInterpolationTypeMzt = int;
+enum : VGColorRampInterpolationTypeMzt
+{
+    VG_COLOR_RAMP_INTERPOLATION_LINEAR_MZT      = 0x1C90,
+    VG_COLOR_RAMP_INTERPOLATION_SMOOTH_MZT      = 0x1C91,
+}
+
+
+// VG_MZT_conical_gradient
+alias VGPaintParamType2Mzt = int;
+enum : VGPaintParamType2Mzt
+{
+    VG_PAINT_CONICAL_GRADIENT_MZT               = 0x1A90,
+}
+
+alias VGPaintTypeMzt = int;
+enum : VGPaintTypeMzt
+{
+    VG_PAINT_TYPE_CONICAL_GRADIENT_MZT         = 0x1B90
+}
+
+
+// VG_MZT_advanced_blend_modes)
+alias VGBlendModeMzt = int;
+enum : VGBlendModeMzt
+{
+    VG_BLEND_CLEAR_MZT                          = 0x2090,
+    VG_BLEND_DST_MZT                            = 0x2091,
+    VG_BLEND_SRC_OUT_MZT                        = 0x2092,
+    VG_BLEND_DST_OUT_MZT                        = 0x2093,
+    VG_BLEND_SRC_ATOP_MZT                       = 0x2094,
+    VG_BLEND_DST_ATOP_MZT                       = 0x2095,
+    VG_BLEND_XOR_MZT                            = 0x2096,
+    VG_BLEND_OVERLAY_MZT                        = 0x2097,
+    VG_BLEND_COLOR_DODGE_MZT                    = 0x2098,
+    VG_BLEND_COLOR_BURN_MZT                     = 0x2099,
+    VG_BLEND_HARD_LIGHT_MZT                     = 0x209A,
+    VG_BLEND_SOFT_LIGHT_MZT                     = 0x209B,
+    VG_BLEND_DIFFERENCE_MZT                     = 0x209C,
+    VG_BLEND_EXCLUSION_MZT                      = 0x209D,
+}
+
+// VG_MZT_statistics
+alias VGStatisticInfoMzt = int;
+enum : VGStatisticInfoMzt
+{
+    VG_STAT_FLATTENING_POINTS_COUNT_MZT         = (1 << 0),
+    VG_STAT_FLATTENING_TIME_MS_MZT              = (1 << 1),
+    VG_STAT_FLATTENING_PERFORMED_COUNT_MZT      = (1 << 2),
+    VG_STAT_RASTERIZER_TOTAL_TIME_MS_MZT        = (1 << 3),
+    VG_STAT_TRIANGULATION_TRIANGLES_COUNT_MZT   = (1 << 4),
+    VG_STAT_TRIANGULATION_TIME_MS_MZT           = (1 << 5),
+    VG_STAT_STROKER_POINTS_COUNT_MZT            = (1 << 6),
+    VG_STAT_STROKER_TIME_MS_MZT                 = (1 << 7),
+    VG_STAT_GL_DRAWELEMENTS_COUNT_MZT           = (1 << 8),
+    VG_STAT_GL_DRAWARRAYS_COUNT_MZT             = (1 << 9),
+    VG_STATISTIC_ALL_MZT                        = ((1 << 10) - 1),
+}
+
+extern(System) @nogc nothrow
+{
+  alias da_vgResetStatisticsMZT = void function(const VGbitfield statistics);
+  alias da_vgGetStatisticiMZT = VGint function(const VGStatisticInfoMzt statistic);
+}
+
+__gshared
+{
+  da_vgResetStatisticsMZT vgResetStatisticsMZT;
+  da_vgGetStatisticiMZT vgGetStatisticiMZT;
+}
+
+
+extern(System) @nogc nothrow
+{
+  alias da_vgPrivContextCreateMZT = void* function(void *_sharedContext);
+  alias da_vgPrivContextDestroyMZT = void function(void *_context);
+  alias da_vgPrivSurfaceCreateMZT = void* function(VGint width, VGint height, VGboolean linearColorSpace, VGboolean alphaPremultiplied, VGboolean alphaMask);
+  alias da_vgPrivSurfaceCreateFromImageMZT = void* function(VGImage image, VGboolean alphaMask);
+  alias da_vgPrivSurfaceResizeMZT = VGboolean function(void *_surface, VGint width, VGint height);
+  alias da_vgPrivSurfaceDestroyMZT = void function(void *_surface);
+  alias da_vgPrivGetSurfaceWidthMZT = VGint function(const void *_surface);
+  alias da_vgPrivGetSurfaceHeightMZT = VGint function(const void *_surface);
+  alias da_vgPrivGetSurfaceFormatMZT = VGImageFormat function(const void *_surface);
+  alias da_vgPrivGetSurfacePixelsMZT = const VGubyte* function(const void *_surface);
+  alias da_vgPrivMakeCurrentMZT = VGboolean function(void *_context, void *_surface);
+  alias da_vgInitContextMZT = VGboolean function(VGint surfaceWidth, VGint surfaceHeight, VGboolean surfaceLinearColorSpace, VGboolean surfaceAlphaPremultiplied);
+  alias da_vgDestroyContextMZT = void function();
+  alias da_vgResizeSurfaceMZT = VGboolean function(VGint surfaceWidth, VGint surfaceHeight);
+  alias da_vgGetSurfaceWidthMZT = VGint function();
+  alias da_vgGetSurfaceHeightMZT = VGint function();
+  alias da_vgGetSurfaceFormatMZT = VGImageFormat function();
+  alias da_vgGetSurfacePixelsMZT = const VGubyte* function();
+  alias da_vgPostSwapBuffersMZT = void function();
+}
+
+__gshared
+{
+    da_vgPrivContextCreateMZT vgPrivContextCreateMZT;
+    da_vgPrivContextDestroyMZT vgPrivContextDestroyMZT;
+    da_vgPrivSurfaceCreateMZT vgPrivSurfaceCreateMZT;
+    da_vgPrivSurfaceCreateFromImageMZT vgPrivSurfaceCreateFromImageMZT;
+    da_vgPrivSurfaceResizeMZT vgPrivSurfaceResizeMZT;
+    da_vgPrivSurfaceDestroyMZT vgPrivSurfaceDestroyMZT;
+    da_vgPrivGetSurfaceWidthMZT vgPrivGetSurfaceWidthMZT;
+    da_vgPrivGetSurfaceHeightMZT vgPrivGetSurfaceHeightMZT;
+    da_vgPrivGetSurfaceFormatMZT vgPrivGetSurfaceFormatMZT;
+    da_vgPrivGetSurfacePixelsMZT vgPrivGetSurfacePixelsMZT;
+    da_vgPrivMakeCurrentMZT vgPrivMakeCurrentMZT;
+    da_vgInitContextMZT vgInitContextMZT;
+    da_vgDestroyContextMZT vgDestroyContextMZT;
+    da_vgResizeSurfaceMZT vgResizeSurfaceMZT;
+    da_vgGetSurfaceWidthMZT vgGetSurfaceWidthMZT;
+    da_vgGetSurfaceHeightMZT vgGetSurfaceHeightMZT;
+    da_vgGetSurfaceFormatMZT vgGetSurfaceFormatMZT;
+    da_vgGetSurfacePixelsMZT vgGetSurfacePixelsMZT;
+    da_vgPostSwapBuffersMZT vgPostSwapBuffersMZT;
 }
