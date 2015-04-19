@@ -1,0 +1,16 @@
+﻿{
+    "name": "derelict_extras-vg",
+    "description": "A dynamic binding to the OpenVG API.",
+    "homepage": "https://github.com/p0nce/DerelictVG",
+    "license": "Boost",
+    "authors": [
+        "Guillaume Piolat"
+    ],
+
+    "targetName": "DerelictVG",
+    "targetPath": "lib",
+
+    "dependencies": {
+        "derelict-util": "~>1.0"
+    }
+}
