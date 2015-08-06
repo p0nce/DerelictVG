@@ -5,7 +5,7 @@ A dynamic binding to [OpenVG](http://www.khronos.org/openvg) for the D Programmi
 
 This does not include bindings to [EGL](https://www.khronos.org/egl) though! For now its only usable with [AmanithVG](http://www.amanithvg.com/).
 
-For information on how to load an OpenVG library via DerelictVG, see the page [DerelictUtil for Users](https://github.com/DerelictOrg/DerelictUtil/wiki/DerelictUtil-for-Users) at the DerelictUtil Wiki. In the meantime, here's some sample code.
+Please see the pages [Building and Linking Derelict](http://derelictorg.github.io/compiling.html) and [Using Derelict](http://derelictorg.github.io/using.html), or information on how to build DerelictVG and load the OpenVG library at run time. In the meantime, here's some sample code.
 
 ```D
 import derelict.openvg;
